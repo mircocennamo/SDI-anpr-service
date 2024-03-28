@@ -1,0 +1,66 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:jaxws="http://cxf.apache.org/jaxws"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://cxf.apache.org/jaxws 
+   http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <jaxws:client name="{http://sogei.it/ANPR/E001AnprService}AnprServicePortE001" createdFromAPI="true">
+        <!-- Comment below element to use non-WS-SecPol CXF interceptor method -->
+        <jaxws:properties>
+            <entry key="ws-security.callback-handler" value="it.interno.anpr.wss.ClientKeystorePasswordCallback"/>
+        </jaxws:properties>
+        <jaxws:outInterceptors>
+            <ref bean="SAML_Request"/>
+        </jaxws:outInterceptors>
+    </jaxws:client>
+	
+    <jaxws:client name="{http://sogei.it/ANPR/E002AnprService}AnprServicePortE002" createdFromAPI="true">
+        <!-- Comment below element to use non-WS-SecPol CXF interceptor method -->
+        <jaxws:properties>
+            <entry key="ws-security.callback-handler" value="it.interno.anpr.wss.ClientKeystorePasswordCallback"/>
+        </jaxws:properties>
+        <jaxws:outInterceptors>
+            <ref bean="SAML_Request"/>
+        </jaxws:outInterceptors>
+    </jaxws:client>
+ 
+<!--    <jaxws:client name="{http://sogei.it/ANPR/E003AnprService}AnprServicePortE003" createdFromAPI="true">-->
+<!--        &lt;!&ndash; Comment below element to use non-WS-SecPol CXF interceptor method &ndash;&gt;-->
+<!--        <jaxws:properties>-->
+<!--            <entry key="ws-security.callback-handler" value="client.ClientKeystorePasswordCallback"/>        -->
+<!--        </jaxws:properties>-->
+
+<!--        <jaxws:outInterceptors>-->
+<!--            <ref bean="SAML_Request"/>-->
+<!--        </jaxws:outInterceptors>-->
+<!--    </jaxws:client>-->
+ 
+<!--     <jaxws:client name="{http://sogei.it/ANPR/E004AnprService}AnprServicePortE004" createdFromAPI="true">-->
+<!--        &lt;!&ndash; Comment below element to use non-WS-SecPol CXF interceptor method &ndash;&gt;-->
+<!--        <jaxws:properties>-->
+<!--            <entry key="ws-security.callback-handler" value="client.ClientKeystorePasswordCallback"/>        -->
+<!--        </jaxws:properties>-->
+
+<!--        <jaxws:outInterceptors>-->
+<!--            <ref bean="SAML_Request"/>-->
+<!--        </jaxws:outInterceptors>-->
+<!--    </jaxws:client>-->
+
+<!--    <bean-->
+<!--        class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor"-->
+<!--        id="SAML_Request">-->
+<!--        <constructor-arg>-->
+<!--            <map>-->
+<!--                <entry key="action" value="SAMLTokenUnsigned"/>-->
+<!--                <entry key="samlPropFile" value="saml.properties"/>-->
+<!--                <entry key="samlCallbackClass" value="it.interno.anpr.saml.SAML2CallbackHandler"/>-->
+<!--            </map>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
+    
+ 
+
+</beans>
+

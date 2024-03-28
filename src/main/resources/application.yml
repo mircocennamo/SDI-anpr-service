@@ -1,0 +1,67 @@
+server:
+  port: 8070
+  servlet:
+    context-path: /anpr
+
+---
+#configurazione ambiente locale
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/ORCLCDB
+    username: anpr
+    password: anpr
+    driver-class-name: oracle.jdbc.OracleDriver
+    jpa:
+      show-sql: true
+
+soap:
+  idOperatore: UtenteFederato
+  authMethod: https://www.spid.gov.it/SpidL2
+  idEnte: 699999
+  ipPostazione: 10.10.10.10
+  idTransazione: 99999
+  pathKeystorePostazione: keystore/TEST/699999-EN-0000.p12
+  passKeystorePostazione: B6EA0DEB
+  aliasKeystorePostazione: 699999-EN-0000
+  endpoint: https://wstest.anpr.interno.it
+  keystore:
+    file: keystore/TEST/699999-EN-0000.p12
+    password: B6EA0DEB
+    type: pkcs12
+    alias: 699999-EN-0000
+
+
+
+---
+#configurazione ambiente dev
+spring:
+  config:
+    activate:
+      on-profile: dev
+      
+  datasource:
+    url: jdbc:oracle:thin:@192.168.22.20:1521/orclpdbssdsvil.ced.local
+    username: anpr
+    password: anpr
+    driver-class-name: oracle.jdbc.OracleDriver
+    jpa:
+      show-sql: true
+
+soap:
+  idOperatore: UtenteFederato
+  authMethod: https://www.spid.gov.it/SpidL2
+  idEnte: 699999
+  ipPostazione: 10.10.10.10
+  idTransazione: 99999
+  pathKeystorePostazione: keystore/TEST/699999-EN-0000.p12
+  passKeystorePostazione: B6EA0DEB
+  aliasKeystorePostazione: 699999-EN-0000
+  endpoint: https://wstest.anpr.interno.it
+  keystore:
+    file: keystore/TEST/699999-EN-0000.p12
+    password: B6EA0DEB
+    type: pkcs12
+    alias: 699999-EN-0000
